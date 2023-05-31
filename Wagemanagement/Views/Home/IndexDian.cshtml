@@ -1,0 +1,280 @@
+﻿
+@{
+    ViewBag.Title = "IndexDian";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>网站后台管理模版</title>
+    <link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css" />
+    <style>
+        .tongzhi img {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap-container welcome-container">
+        <div class="row">
+            <div class="welcome-left-container col-lg-9">
+                <div class="data-show">
+                    <ul class="clearfix">
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" class="clearfix">
+                                <div class="icon-bg bg-org f-l">
+                                    <span class="iconfont">&#xe606;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">店铺员工数</p>
+                                    <p><span class="color-org">@ViewBag.Staff</span><span class="iconfont">个</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" class="clearfix" onclick="top.location.href('~/Store/StoreIndex')">
+                                <div class="icon-bg bg-blue f-l">
+                                    <svg t="1624280194752" style="margin-top:7px" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4072" width="50" height="50"><path d="M681.1 440.2c-129.3 0-234.1 105.2-234.1 235s104.8 234.9 234.1 234.9 234.1-105.2 234.1-234.9-104.8-235-234.1-235z m99.8 180.1v56.9h-71.6v43.6h50.3v56.9h-50.3v74.5h-56.7v-74.5h-49.8v-56.9h49.8v-43.6h-70.7v-56.9h65.5l-80.5-80.8 40.1-40.2 73.6 73.7 74.6-74.8 40.1 40.3-81.5 81.8h67.1z" p-id="4073" fill="#ffffff"></path><path d="M310.1 137.7v0.4c-0.1 19.3 14.8 35.1 33 35.1h315.2c18.2 0 33-15.8 33-35.1v-0.4c0-18.5-13.7-33.7-30.6-35h-320c-17.1 1.4-30.6 16.7-30.6 35z" p-id="4074" fill="#ffffff"></path><path d="M220 929.2h382.9c-108.5-33.4-187.5-134.5-187.5-254 0-146.7 119-265.7 265.7-265.7 62.1 0 119.3 21.3 164.5 57.1V211.2c0.2-39.5-31.9-71.6-71.4-71.6h-53.6c-0.9 37.3-31.7 67.6-69.2 67.6h-304c-38.1 0-69.4-31.2-69.4-69.4h-58c-38.9 0-70.6 31.6-70.6 70.6v650.1c0 39 31.6 70.7 70.6 70.7z m69.8-620.4h415.8c18.1 0 33.1 14.8 33.1 33.1 0 18.2-14.8 33.1-33.1 33.1H289.8c-18.1 0-33.1-14.8-33.1-33.1 0-18.2 14.9-33.1 33.1-33.1z m1.8 142.6h138c19.2 0 34.9 15.7 34.9 34.9s-15.7 34.9-34.9 34.9h-138c-19.2 0-34.9-15.7-34.9-34.9s15.8-34.9 34.9-34.9z m-34.9 176.1c0-17.4 14.2-31.8 31.8-31.8H380c17.4 0 31.8 14.2 31.8 31.8v6.3c-0.1 17.5-14.3 31.8-31.8 31.8h-91.5c-17.4 0-31.8-14.2-31.8-31.8v-6.3z m34.9 113.2h63.9c19.2 0 34.9 15.7 34.9 34.9s-15.7 34.9-34.9 34.9h-63.9c-19.2 0-34.9-15.7-34.9-34.9s15.8-34.9 34.9-34.9z" p-id="4075" fill="#ffffff"></path></svg>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">店铺本月考勤项扣款人数</p>
+                                    <p><span class="color-blue"> @ViewBag.store</span><span class="iconfont">个</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" class="clearfix">
+                                <div class="icon-bg bg-green f-l">
+                                    <svg t="1624286020574" style="margin-top:9px" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4656" width="50" height="50"><path d="M454.186667 325.973333H407.466667v-46.72c0-23.466667-19.2-42.666667-42.666667-42.666666s-42.666667 19.2-42.666667 42.666666v46.72h-46.72c-23.466667 0-42.666667 19.2-42.666666 42.666667s19.2 42.666667 42.666666 42.666667h46.72v46.72c0 23.466667 19.2 42.666667 42.666667 42.666666s42.666667-19.2 42.666667-42.666666v-46.72h46.72c23.466667 0 42.666667-19.2 42.666666-42.666667s-19.2-42.666667-42.666666-42.666667zM767.146667 325.973333h-178.773334c-23.466667 0-42.666667 19.2-42.666666 42.666667s19.2 42.666667 42.666666 42.666667h178.773334c23.466667 0 42.666667-19.2 42.666666-42.666667s-19.2-42.666667-42.666666-42.666667zM767.146667 571.946667h-178.773334c-23.466667 0-42.666667 19.2-42.666666 42.666666s19.2 42.666667 42.666666 42.666667h178.773334c23.466667 0 42.666667-19.2 42.666666-42.666667s-19.2-42.666667-42.666666-42.666666zM767.146667 705.92h-178.773334c-23.466667 0-42.666667 19.2-42.666666 42.666667s19.2 42.666667 42.666666 42.666666h178.773334c23.466667 0 42.666667-19.2 42.666666-42.666666s-19.2-42.666667-42.666666-42.666667zM458.24 588.16c-16.64-16.64-43.733333-16.64-60.373333 0l-33.066667 33.066667-33.066667-33.066667c-16.64-16.64-43.733333-16.64-60.373333 0-16.64 16.64-16.64 43.733333 0 60.373333l33.066667 33.066667-33.066667 33.066667a42.752 42.752 0 0 0 30.08 72.96c10.88 0 21.76-4.266667 30.08-12.586667l33.066667-33.066667 33.066666 33.066667c8.32 8.32 19.2 12.586667 30.08 12.586667s21.76-4.266667 30.08-12.586667c16.64-16.64 16.64-43.733333 0-60.373333l-33.066666-33.066667 33.066666-33.066667c17.066667-16.64 17.066667-43.733333 0.426667-60.373333z" p-id="4657" fill="#ffffff"></path><path d="M810.666667 85.333333H213.333333c-70.613333 0-128 57.386667-128 128v597.333334c0 70.613333 57.386667 128 128 128h597.333334c70.613333 0 128-57.386667 128-128V213.333333c0-70.613333-57.386667-128-128-128z m42.666666 725.333334c0 23.466667-19.2 42.666667-42.666666 42.666666H213.333333c-23.466667 0-42.666667-19.2-42.666666-42.666666V213.333333c0-23.466667 19.2-42.666667 42.666666-42.666666h597.333334c23.466667 0 42.666667 19.2 42.666666 42.666666v597.333334z" p-id="4658" fill="#ffffff"></path></svg>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">店铺本月得奖人数</p>
+                                    <p><span class="color-green">@ViewBag.Bonus</span><span class="iconfont">个</span></p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--图表-->
+                <div class="chart-panel panel panel-default">
+                    <div class="panel-body" id="chart" style="height: 376px;">
+                    </div>
+                </div>
+                <!--服务器信息-->
+                <div class="server-panel panel panel-default">
+                    <div class="panel-header">联系我们</div>
+                    <div class="panel-body clearfix">
+                        <div class="col-md-2">
+                            <p class="title">微信:</p>
+                            <span class="info">xxxxxxxxxxxx</span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">QQ:</p>
+                            <span class="info">xxxxxxxxxxx</span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">邮箱:</p>
+                            <span class="info">xxxxxxxxxxx </span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title"></p>
+                            <span class="info"></span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title"></p>
+                            <span class="info"></span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">当前时间</p>
+                            <span class="info" id="box"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="welcome-edge col-lg-3">
+                <!--最新留言-->
+                <div class="panel panel-default comment-panel tongzhi">
+                    <div class="panel-header">最新通知</div>
+                    <div class="panel-body">
+                        <div class="commentbox" style="overflow: hidden">
+                            <div id="div1"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section scripts{
+        <script src="~/static/lib/echarts/echarts-all.js"></script>
+
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script>
+            $(function () {
+                $.ajax({
+                    url: "/News/Shuju",
+                    type: "post",
+                    dataType: "Json",
+                    success: function (res) {
+                        //解密解码
+                        var nei = decodeURIComponent(atob(res.New_content));
+
+                        $("#div1").html(nei);
+                        if (res === 'True') {
+                            layer.msg('保存成功');
+                        }
+                    }
+                });
+                function Diao(){
+                    top.location.url("~/Store/StoreIndex")
+                };
+            });
+        </script>
+
+        <script>
+
+
+
+            $.ajax({
+                url: "/Home/GetChartss",
+                type: "get",
+                data: {},
+                success: function (res) {
+                    var Staff_Name = []//用于存放名称
+                    var Grade_price = []//用于存放价格
+                    var SubsidyAmount = []
+                    var WR_Bonus = []
+                    var Deduction = []
+                    var WR_Pay = []
+                    var Real_Wage = []
+                    $.each(res, function (i, v) {
+                        Staff_Name[i] = v.Staff_Name;
+                        SubsidyAmount[i] = v.SubsidyAmount;
+                        Grade_price[i] = v.Grade_price;
+                        WR_Bonus[i] = v.WR_Bonus;
+                        Deduction[i] = v.Deduction;
+                        WR_Pay[i] = v.WR_Pay
+                        Real_Wage[i] = v.Real_Wage
+                    });
+                  
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('chart'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: '煮仙丹公司等级基本工资',
+                             textStyle: {
+                                color: "rgb(85, 85, 85)",
+                                fontSize: 18,
+                                fontStyle: "normal",
+                                fontWeight: "normal"
+                            }
+                        },
+                    
+                        tooltip: {},
+                        legend: {
+                            data: ['基本工资','补贴','奖金','考勤扣款','实发工资','应发工资']
+                        },
+
+                        xAxis: [
+                            {
+                                data: Staff_Name,
+                                axisLabel: {
+                                    interval: 0,//代表显示所有x轴标签显示
+                                }
+                            }
+                        ],
+                        yAxis: {
+                        },
+                        series: [{
+                            name: '基本工资',
+                            type: 'bar',
+                            data: Grade_price,
+
+                        },
+                            {
+                                name: '补贴',
+                                type: 'bar',
+                                data: SubsidyAmount,
+                            }
+                            ,
+                            {
+                                name: '奖金',
+                                type: 'bar',
+                                data: WR_Bonus,
+
+                            },
+                            {
+                                name: '考勤扣款',
+                                type: 'bar',
+                                data: Deduction,
+
+                            },
+                            {
+                                name: '实发工资',
+                                type: 'bar',
+                                data: WR_Pay,
+
+                            },
+                            {
+                                name: '应发工资',
+                                type: 'bar',
+                                data: Real_Wage,
+
+                            }
+                        ]
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                    window.addEventListener("resize", function () {
+                        myChart.resize();
+                    });
+                }
+            });
+        </script>
+        <script>
+            window.onload = function () {
+                function checkTime(i) {      //此函数用来检查获取的数值是否大于10；
+                    if (i < 10) {
+                        i = '0' + i;      //如果小于10，则前面+0
+                    }
+                    return i;
+                }
+            function show() {
+                var mydate = new Date();
+                var year = mydate.getFullYear();
+                var month = mydate.getMonth() + 1;//因为月份是从零开始，故要得到当前的月份就要+1
+                var date = mydate.getDate();  //日
+                var day = mydate.getDay();//返回星期几
+                var week = new Array(7);
+                week[0] = '星期一';
+                week[1] = '星期二';
+                week[2] = '星期三';
+                week[3] = '星期四';
+                week[4] = '星期五';
+                week[5] = '星期六';
+                week[6] = '星期日';
+                var h = mydate.getHours();
+                var m = mydate.getMinutes();
+                var s = mydate.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                document.getElementById('box').innerHTML = year + '年' + month + '月' + date + '日' + week[day] + h + ':' + m + ':' + s;
+            }
+            setInterval(show, 500);  //每隔500ms调用一次show函数
+            };
+        </script>
+    }
+
+</body>
+</html>
+
+

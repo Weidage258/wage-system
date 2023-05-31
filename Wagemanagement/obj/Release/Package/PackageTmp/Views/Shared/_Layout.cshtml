@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>网站后台管理模版</title>
+    <link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+
+            $.ajax({
+                type: 'GET',
+                url: "/Login/Niu",
+                data: {
+                    "id":@Session["id"]
+                },
+                success: function (data) {
+                    console.log(data)
+                    if (data == "管理员") {
+                        $('.admin').css('display', 'none')
+                    } else if (data == "店部管理者") {
+                        $('.Storeadm').css('display', 'none')
+                    } else if(data == "普通员工"){
+                        $('.Staff').css('display', 'none')
+                    }
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <div class="main-layout" id='main-layout'>
+        <!--侧边栏-->
+        <div class="main-layout-side">
+            <div class="m-logo">
+                <img src="~/static/admin/images/login/uu.png" style="width:150px;height:60px;" />
+            </div>
+            <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"  data-text="个人信息" style="height:45px">
+                        <i class="iconfont ">
+                            <svg t="1624246659688" style=" margin-left: -3px;" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2557" width="30" height="30"><path d="M708.367 353.656c0-56.745-22.729-110.092-63.996-150.218s-96.132-62.224-154.494-62.224-113.229 22.099-154.498 62.224-63.996 93.473-63.996 150.218c0 43.987 13.713 86.196 39.651 122.064 7.273 10.060 21.559 12.479 31.904 5.406 10.343-7.073 12.834-20.963 5.561-31.019-20.486-28.329-31.315-61.684-31.315-96.451 0-92.585 77.471-167.911 172.694-167.911s172.689 75.325 172.689 167.911-77.471 167.906-172.694 167.906c-47.055 0-92.711 8.965-135.702 26.646-41.516 17.076-78.796 41.509-110.806 72.632-32.007 31.123-57.142 67.371-74.705 107.736-18.181 41.808-27.401 86.199-27.401 131.948 0 12.298 10.252 22.266 22.898 22.266s22.898-9.968 22.898-22.266c0-162.35 135.843-294.425 302.816-294.425 58.361 0 113.229-22.099 154.497-62.22s63.996-93.477 63.996-150.221zM530.991 631.551c0 12.298 10.252 22.266 22.898 22.266h304.337c12.647 0 22.898-9.968 22.898-22.266s-10.252-22.266-22.898-22.266h-304.337c-12.647 0-22.898 9.968-22.898 22.266zM858.229 722.671h-304.337c-12.65 0-22.898 9.968-22.898 22.266s10.252 22.266 22.898 22.266h304.337c12.647 0 22.898-9.968 22.898-22.266 0-12.294-10.252-22.266-22.898-22.266zM858.229 836.056h-304.337c-12.65 0-22.898 9.967-22.898 22.266s10.252 22.266 22.898 22.266h304.337c12.647 0 22.898-9.968 22.898-22.266 0-12.294-10.252-22.266-22.898-22.266z" fill="#dbdbdb" p-id="2558"></path></svg>
+                        </i>
+                        <p style="margin-top: -50px; margin-left: 36px;font-size: 14px;">个人信息</p>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/Home/modifyPwd" data-id='5' data-text="个人信息"><span class="l-line"></span>个人信息</a></dd>
+                      
+                    </dl>
+                </li>
+                <li class="layui-nav-item Storeadm Staff">
+                    <a href="javascript:;">
+                        <i class="iconfont">
+                            <svg t="1622871432848" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2576" width="20" height="20">
+                                <path d="M128 0m22.308571 0l65.097143 0q22.308571 0 22.308572 22.308571l0 588.617143q0 22.308571-22.308572 22.308572l-65.097143 0q-22.308571 0-22.308571-22.308572l0-588.617143q0-22.308571 22.308571-22.308571Z" p-id="2577" fill="#bfbfbf"></path>
+                                <path d="M128 776.228571m22.308571 0l65.097143 0q22.308571 0 22.308572 22.308572l0 203.154286q0 22.308571-22.308572 22.308571l-65.097143 0q-22.308571 0-22.308571-22.308571l0-203.154286q0-22.308571 22.308571-22.308572Z" p-id="2578" fill="#bfbfbf">
+                                </path>
+                                <path d="M786.285714 0m22.308572 0l65.097143 0q22.308571 0 22.308571 22.308571l0 584.228572q0 22.308571-22.308571 22.308571l-65.097143 0q-22.308571 0-22.308572-22.308571l0-584.228572q0-22.308571 22.308572-22.308571Z" p-id="2579" fill="#bfbfbf"></path>
+                                <path d="M786.285714 779.154286m22.308572 0l65.097143 0q22.308571 0 22.308571 22.308571l0 200.228572q0 22.308571-22.308571 22.308571l-65.097143 0q-22.308571 0-22.308572-22.308571l0-200.228572q0-22.308571 22.308572-22.308571Z" p-id="2580" fill="#bfbfbf"></path>
+                                <path d="M457.142857 390.948571m22.308572 0l65.097142 0q22.308571 0 22.308572 22.308572l0 588.434286q0 22.308571-22.308572 22.308571l-65.097142 0q-22.308571 0-22.308572-22.308571l0-588.434286q0-22.308571 22.308572-22.308572Z" p-id="2581" fill="#bfbfbf"></path>
+                                <path d="M182.857143 713.142857m-128 0a128 128 0 1 0 256 0 128 128 0 1 0-256 0Z" p-id="2582" fill="#bfbfbf"></path>
+                                <path d="M512 306.285714m-128 0a128 128 0 1 0 256 0 128 128 0 1 0-256 0Z" p-id="2583" fill="#bfbfbf"></path>
+                                <path d="M841.142857 713.142857m-128 0a128 128 0 1 0 256 0 128 128 0 1 0-256 0Z" p-id="2584" fill="#bfbfbf"></path>
+                                <path d="M457.142857 0m22.308572 0l65.097142 0q22.308571 0 22.308572 22.308571l0 180.48q0 22.308571-22.308572 22.308572l-65.097142 0q-22.308571 0-22.308572-22.308572l0-180.48q0-22.308571 22.308572-22.308571Z" p-id="2585" fill="#bfbfbf"></path>
+                            </svg>
+                        </i>参数管理
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/Home/Bonus" data-id='3' data-text="奖金管理"><span class="l-line"></span>奖金管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/Subsidy/SubsidyIndex" data-id='9' data-text="津贴管理"><span class="l-line"></span>津贴管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/Department/DepIndex" data-id='7' data-text="部门管理"><span class="l-line"></span>部门管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/Cwa/CwaIndex" data-id='8' data-text="考勤项管理"><span class="l-line"></span>考勤项管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/Store/StoreIndex" data-id='1' data-text="店铺管理"><span class="l-line"></span>店铺管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/Grade/GradeIndex" data-id='2' data-text="员工级别项管理"><span class="l-line"></span>员工级别项管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item Storeadm Staff">
+                    <a href="javascript:;">
+                        <i class="iconfont">
+                            <svg t="1622872658530" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3539" width="20" height="20">
+                                <path d="M904.533333 0H153.6a34.133333 34.133333 0 0 0-34.133333 34.133333V273.066667a34.133333 34.133333 0 0 0 68.266666 0V68.266667h682.666667v887.466666h-682.666667v-204.8a34.133333 34.133333 0 0 0-68.266666 0v238.933334a34.133333 34.133333 0 0 0 34.133333 34.133333h750.933333a34.133333 34.133333 0 0 0 34.133334-34.133333V34.133333A34.133333 34.133333 0 0 0 904.533333 0z" fill="#cdcdcd" p-id="3540"></path>
+                                <path d="M119.466667 409.6h68.266666a34.133333 34.133333 0 0 0 0-68.266667h-68.266666a34.133333 34.133333 0 0 0 0 68.266667zM119.466667 546.133333h68.266666a34.133333 34.133333 0 0 0 0-68.266666h-68.266666a34.133333 34.133333 0 0 0 0 68.266666zM187.733333 682.666667a34.133333 34.133333 0 0 0 0-68.266667h-68.266666a34.133333 34.133333 0 0 0 0 68.266667zM290.133333 699.733333a34.133333 34.133333 0 0 0 68.266667 0 179.541333 179.541333 0 0 1 358.4 0 34.133333 34.133333 0 0 0 68.266667 0A247.125333 247.125333 0 0 0 645.12 477.866667a157.696 157.696 0 1 0-215.04 0A247.125333 247.125333 0 0 0 290.133333 699.733333z m157.696-337.237333a89.429333 89.429333 0 1 1 90.112 90.112 89.429333 89.429333 0 0 1-90.112-90.112z" fill="#cdcdcd" p-id="3541"></path>
+                            </svg>
+                        </i>员工管理
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/Staff/StaffIndex" data-id='10' data-text="员工信息管理"><span class="l-line"></span>员工信息管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/Staff_RP/Staff_RPIndex" data-id='11' data-text="修改员工密码"><span class="l-line"></span>角色管理</a></dd>
+                        <dd><a href="javascript:;" data-url="/Staff_Role/Staff_RoleIndex" data-id='12' data-text="权限管理"><span class="l-line"></span>权限管理</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item admin Staff">
+                    <a href="javascript:;">
+                        <i class="iconfont">
+                            <svg t="1622873005971" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3735" width="20" height="20">
+                                <path d="M387.584 542.208c0 14.336 9.216 26.624 20.48 27.136 8.192 50.176 42.496 87.552 83.456 87.552s75.776-37.888 83.456-87.552h1.536c11.776 0 21.504-12.288 21.504-27.136 0-13.312-7.68-24.576-17.408-26.624 0 0 23.04-77.824-25.088-99.84-6.144-67.072-123.904-14.336-123.904-14.336-60.416 31.744-31.232 116.736-31.232 116.736-7.68 3.584-12.8 13.312-12.8 24.064z m22.016-21.504h2.048V514.56l6.144-36.352c4.096-6.144 7.68-9.728 7.68-9.728 53.76 2.56 95.744-24.064 95.744-24.064 35.84-27.648 47.104 77.824 47.104 77.824h1.024l4.608-1.024h2.56c4.096 0 7.68 2.048 10.752 5.632 3.072 4.096 5.12 9.728 5.12 15.36 0 6.144-2.048 11.776-5.12 15.872-3.072 3.584-6.656 5.632-10.752 5.632h-1.024l-5.632-0.512-1.024 5.12c-3.584 23.552-13.824 44.544-27.648 59.392-7.168 7.168-14.848 13.312-23.04 16.896-8.704 4.096-17.408 6.144-27.136 6.144-9.216 0-18.432-2.048-26.624-6.144-8.704-4.096-16.384-9.728-23.04-16.896-14.336-15.36-24.064-36.352-27.648-59.392l-0.512-4.608-4.608-0.512c-8.192-0.512-14.848-10.24-14.848-21.504 0-6.144 2.048-11.264 5.12-15.36 2.56-3.584 6.656-5.632 10.752-5.632z" fill="#bfbfbf" p-id="3736"></path>
+                                <path d="M587.264 656.384l-74.24 124.928-9.216-56.32c6.144-3.584 10.24-10.24 10.24-17.92 0-11.776-9.728-21.504-21.504-21.504-11.776 0-21.504 9.728-21.504 21.504 0 7.68 4.096 14.336 10.24 17.92l-8.704 55.296-73.728-123.904c-41.472 17.92-71.168 47.616-77.312 81.92h-1.536v109.056c0 36.352 77.312 65.536 172.544 65.536s172.544-29.184 172.544-65.536V738.304h-1.536c-5.632-34.816-34.816-64-76.288-81.92z" fill="#bfbfbf" p-id="3737"></path>
+                                <path d="M715.776 272.896h-131.584c-13.312 37.888-49.152 65.024-91.648 65.024-41.984 0-78.336-27.136-91.648-65.024h-131.584c-57.856 0-104.96 47.104-104.96 104.96V909.824c0 57.856 47.104 104.96 104.96 104.96h445.44c57.856 0 104.96-47.104 104.96-104.96V377.856c1.536-57.856-45.568-104.96-103.936-104.96z m17.408 636.928c0 9.728-7.68 17.408-17.408 17.408h-445.44c-9.728 0-17.408-7.68-17.408-17.408V377.856c0-9.728 7.68-17.408 17.408-17.408h445.44c9.728 0 17.408 7.68 17.408 17.408V909.824z" fill="#bfbfbf" p-id="3738"></path>
+                                <path d="M493.056 311.296c38.912 0 70.656-31.744 70.656-70.656v-160.768c0-38.912-31.744-70.656-70.656-70.656s-70.656 31.744-70.656 70.656V240.64c0 38.912 31.744 70.656 70.656 70.656z m0-110.08c22.016 0 39.936 16.896 39.936 37.888 0 20.992-17.92 37.888-39.936 37.888s-39.936-16.896-39.936-37.888c0-20.992 17.92-37.888 39.936-37.888z" fill="#bfbfbf" p-id="3739"></path>
+                            </svg>
+                        </i>店铺
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/SubStore/SubStoreIndex" data-id='15' data-text="店铺员工"><span class="l-line"></span>店铺员工</a></dd>
+                        <dd><a href="javascript:;" data-url="/Cwa_Store/Cwa_StoreIndex" data-id='14' data-text="考勤管理"><span class="l-line"></span>考勤管理</a></dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item Storeadm Staff">
+                    <a href="javascript:;">
+                        <i class="iconfont">
+                            <svg t="1624247686925" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1231" width="20" height="20"><path d="M754.585 77c45.668 0 83.37 34.091 89.018 78.2h9.936c60.396 0 109.47 48.444 110.446 108.574L964 265.6v552c0 60.363-48.47 109.41-108.634 110.385l-1.827 0.015H165.461c-60.396 0-109.47-48.444-110.446-108.574L55 817.6v-552c0-60.363 48.47-109.41 108.634-110.385l1.827-0.015 30.647-0.001c5.587-43.63 42.536-77.458 87.534-78.187l1.485-0.012h469.458z m149.582 417.011H114.832V817.6c0 27.666 22.217 50.146 49.792 50.593l0.837 0.007h688.078c27.682 0 50.174-22.204 50.621-49.763l0.007-0.837V494.011z m-708.79-279.012l-29.916 0.001c-27.682 0-50.174 22.204-50.621 49.763l-0.007 0.837-0.001 168.611h80.545V214.999zM754.585 136.8H285.127c-16.287 0-29.534 13.007-29.909 29.194l-0.008 0.706v267.511h529.291V166.7c0-16.277-13.014-29.517-29.21-29.892l-0.706-0.008z m98.954 78.2l-9.205-0.001v219.212h59.833V265.6c0-27.666-22.216-50.146-49.79-50.593l-0.838-0.007z m-391.934-42.125l50.164 50.103 49.714-49.653c6.612-6.603 17.269-6.69 23.987-0.26l0.266 0.26 0.015 0.015c6.593 6.601 6.674 17.243 0.246 23.943l-0.26 0.266-47.41 47.35L582 244.9c10.162 0 18.4 8.238 18.4 18.4 0 10.162-8.238 18.4-18.4 18.4h-49.488v23h65.597c10.162 0 18.4 8.238 18.4 18.4 0 10.162-8.238 18.4-18.4 18.4h-65.597v42.54c0 10.056-8.062 18.229-18.075 18.407l-0.334 0.003c-10.056 0-18.23-8.062-18.408-18.076l-0.003-0.334V341.5h-67.897c-10.162 0-18.4-8.238-18.4-18.4 0-10.162 8.238-18.4 18.4-18.4h67.897v-23h-47.186c-10.162 0-18.4-8.238-18.4-18.4 0-10.162 8.238-18.4 18.4-18.4h36.704l-47.858-47.801c-6.69-6.681-6.696-17.52-0.015-24.209l0.015-0.015c6.7-6.691 17.553-6.691 24.253 0z" fill="#dbdbdb" p-id="1232"></path></svg>
+                        </i>工资管理
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/Wages/WagesIndex" data-id='16' data-text="发工资表"><span class="l-line"></span>生成工资表</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item Storeadm Staff">
+                    <a href="javascript:;">
+                        <i class="iconfont">
+                            <svg t="1624248083555" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2128" width="20" height="20"><path d="M580.256 853.344a68.256 68.256 0 0 1-136.352 4.864l-0.16-4.864h136.512z m-32-785.088a32 32 0 0 1 32 32l0.032 8.64c155.776 30.208 273.056 161.696 273.056 319.328l-0.032 322.688H889.6a32 32 0 0 1 32 32v4.288a32 32 0 0 1-32 32H134.4a32 32 0 0 1-32-32v-4.256a32 32 0 0 1 32-32h36.256V428.192c0-157.632 117.28-289.12 273.056-319.296v-8.64a32 32 0 0 1 32-32h72.544z" p-id="2129" fill="#dbdbdb"></path></svg>
+                        </i>发布通知
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/News/NewsIndex" data-id='20' data-text="发布通知"><span class="l-line"></span>发布通知</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <i class="iconfont">
+                            <svg t="1624248142390" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2397" width="20" height="20"><path d="M584.3 428.6c5.4 0.1 10.5-1.9 14.4-5.6 3.9-3.7 6.1-8.8 6.2-14.2-0.2-11.1-9.4-20-20.6-19.8H470l68.7-78.9c3.5-4 5.2-9.2 4.7-14.5-0.5-5.3-3.2-10.1-7.3-13.4-8.8-7-21.6-5.9-29.1 2.5L416.2 389h8.5l-90.8-104.2c-7.5-8.5-20.3-9.6-29.1-2.5-4.2 3.3-6.8 8.1-7.3 13.4-0.5 5.3 1.2 10.5 4.7 14.5l68.7 78.8H256.6c-5.4-0.1-10.6 1.9-14.4 5.6-3.9 3.7-6.1 8.8-6.2 14.2 0 11 9.2 19.9 20.6 19.9H398v93.9H256.6c-5.4-0.1-10.6 1.9-14.5 5.7-3.9 3.7-6.1 8.9-6.2 14.2 0 10.9 9.2 19.8 20.6 19.8H398v107.6c0 11 9.2 19.9 20.6 19.9 11.2 0.2 20.4-8.7 20.6-19.9V562.2h144.9c5.4 0.1 10.6-1.9 14.4-5.6 3.9-3.7 6.1-8.8 6.2-14.2-0.3-11.2-9.5-20-20.6-19.8H439.3v-93.9h145z" fill="#dbdbdb" p-id="2398"></path><path d="M420.4 904.1C188.6 904.1 0 715.5 0 483.7S188.6 63.3 420.4 63.3c231.8 0 420.4 188.6 420.4 420.4S652.2 904.1 420.4 904.1z m0-775.2c-195.7 0-354.8 159.2-354.8 354.8 0 195.7 159.2 354.9 354.8 354.9 195.6 0 354.8-159.2 354.8-354.9 0-195.6-159.1-354.8-354.8-354.8z" fill="#dbdbdb" p-id="2399"></path><path d="M1005.3 841.6c24.5 19.5 24.9 59.7 1 89.7s-63.2 38.5-87.7 19l-217-159.9c-24.5-19.5-24.9-59.7-1-89.7s63.2-38.5 87.7-19l217 159.9z" fill="#dbdbdb" p-id="2400"></path></svg>
+                        </i>个人工资查询
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" data-url="/StaffWages/StaffWagesIndex" data-id='18' data-text="查看工资"><span class="l-line"></span>查看工资</a></dd>
+                        <dd><a href="javascript:;" data-url="/StaffWages/StaffCwaIndex" data-id='19' data-text="查看考勤"><span class="l-line"></span>查看考勤</a></dd>
+                        <dd><a href="javascript:;" data-url="/StaffWages/StaffSubsidyIndex" data-id='20' data-text="查看补贴"><span class="l-line"></span>查看补贴</a></dd>
+                        <dd><a href="javascript:;" data-url="/StaffWages/StaffBounsIndex" data-id='12' data-text="查看获得奖金"><span class="l-line"></span>查看获得奖金</a></dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </div>
+        <!--右侧内容-->
+        <div class="main-layout-container">
+            <!--头部-->
+            <div class="main-layout-header">
+                <div class="menu-btn" id="hideBtn">
+                    <a href="javascript:;">
+                        <span class="iconfont">&#xe60e;</span>
+                    </a>
+                </div>
+                <ul class="layui-nav" lay-filter="rightNav">
+                    @*<li class="layui-nav-item"><a href="javascript:;" data-url="email.html" data-id='4' data-text="邮件系统"><i class="iconfont">&#xe603;</i></a></li>*@
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" data-url="admin-info.html" data-id='5' data-text="个人信息">@Session["Login"]</a>
+                    </li>
+                    <li class="layui-nav-item"><a href="~/Login/Index">退出</a></li>
+                </ul>
+            </div>
+            <!--主体内容-->
+            <div class="main-layout-body">
+                <!--tab 切换-->
+                <div class="layui-tab layui-tab-brief main-layout-tab" lay-filter="tab" lay-allowClose="true">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this welcome">后台主页</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show" style="background: #f5f5f5;">
+                            <!--1-->
+                            @RenderBody()
+                            <!--1end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--遮罩-->
+        <div class="main-mask">
+
+        </div>
+    </div>
+
+
+
+    
+
+    <script src="../../static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../static/admin/js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../static/admin/js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../static/admin/lib/echarts/echarts.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

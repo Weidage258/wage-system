@@ -1,0 +1,286 @@
+﻿
+@{
+    ViewBag.Title = "IndexStaff";
+}
+
+
+@{
+    ViewBag.Title = "IndexDian";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>网站后台管理模版</title>
+    <link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css" />
+    <style>
+        .tongzhi img {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap-container welcome-container">
+        <div class="row">
+            <div class="welcome-left-container col-lg-9">
+                <div class="data-show">
+                    <ul class="clearfix">
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" class="clearfix">
+                                <div class="icon-bg bg-org f-l">
+                                    <svg t="1624287334386" class="icon" style="margin-top:4px;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6669" width="60" height="60"><path d="M512 64c249.6 0 448 198.4 448 448s-198.4 448-448 448-448-198.4-448-448 198.4-448 448-448z m0 64C300.8 128 128 300.8 128 512s172.8 384 384 384 384-172.8 384-384-172.8-384-384-384zM377.6 256L512 390.4 646.4 256l44.8 44.8L544 448h128v64h-128v64h128v64h-128v128h-64v-128h-128V576h128V512h-128V448h128L332.8 300.8l44.8-44.8z" p-id="6670" fill="#ffffff"></path></svg>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">在公司获得的总金额</p>
+                                    <p><span class="color-org">@ViewBag.sum</span><span class="iconfont">RMB</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" class="clearfix" onclick="top.location.href('~/Store/StoreIndex')">
+                                <div class="icon-bg bg-blue f-l">
+                                    <svg t="1624286946411" style="margin-top: 10px;" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5772" width="50" height="50"><path d="M832 768V192a128 128 0 0 0-128-128H192A160.128 160.128 0 0 0 35.2 192H32v64H192v576c0 59.584 40.896 109.184 96 123.52V960c5.504 0 10.688-1.088 16-1.6 5.312 0.64 10.56 1.6 16 1.6h544v-3.264A160 160 0 0 0 988.736 832h3.264v-64H832zM101.888 192c13.184-37.184 48.384-64 90.112-64v64H101.888zM256 832V128h448a64 64 0 0 1 64 64v576H384v32a96 96 0 0 1-75.456 93.696A63.104 63.104 0 0 1 256 832z m576 64H415.296c14.144-18.688 24.64-40.192 29.504-64h477.312c-13.248 37.184-48.384 64-90.112 64z" p-id="5773" fill="#ffffff"></path><path d="M352 512a32 32 0 0 0 0 64h128v128a32 32 0 0 0 64 0V576h128a32 32 0 0 0 0-64h-128V448h128a32 32 0 0 0 0-64H558.272l17.472-17.472-16-16 101.952-101.952a33.472 33.472 0 0 0-47.296-47.296L512.448 303.168 410.88 201.6a34.816 34.816 0 0 0-49.216 49.28l101.504 101.568-5.888 6.016A32.64 32.64 0 0 0 447.872 384H352a32 32 0 0 0 0 64h128v64h-128z" p-id="5774" fill="#ffffff"></path></svg>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">最新工资</p>
+                                    <p><span class="color-blue"> @ViewBag.wage</span><span class="iconfont"></span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" class="clearfix">
+                                <div class="icon-bg bg-green f-l">
+                                    <svg t="1624287474836" style="margin-top: 9px;" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7577" width="48" height="48"><path d="M992 931.2V193.6c0-19.2-22.4-22.4-22.4-22.4H790.4V40c-59.2-60.8-108.8-1.6-108.8-1.6v134.4h-320V35.2c-59.2-59.2-108.8 0-108.8 0v136H52.8C32 171.2 32 193.6 32 193.6v739.2c0 78.4 65.6 67.2 65.6 67.2H928c65.6 0 64-68.8 64-68.8zM803.2 577.6c-60.8 73.6-304 305.6-304 305.6s-49.6 38.4-88 0-174.4-169.6-174.4-169.6-12.8-92.8 84.8-72l110.4 112s19.2 24 44.8 0L729.6 512s102.4-25.6 73.6 65.6z m97.6-228.8H121.6v-64c0-19.2 24-24 24-24h728c25.6 0 27.2 24 27.2 24v64z" p-id="7578" fill="#ffffff"></path></svg>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">最新考勤扣款</p>
+                                    <p><span class="color-green">@ViewBag.duction </span><span class="iconfont"></span></p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--图表-->
+                <div class="chart-panel panel panel-default">
+                    <div class="panel-body" id="chart" style="height: 376px;">
+                    </div>
+                </div>
+                <!--服务器信息-->
+                <div class="server-panel panel panel-default">
+                    <div class="panel-header">联系我们</div>
+                    <div class="panel-body clearfix">
+                        <div class="col-md-2">
+                            <p class="title">微信:</p>
+                            <span class="info">xxxxxxxxxxxx</span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">QQ:</p>
+                            <span class="info">xxxxxxxxxxx</span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">邮箱:</p>
+                            <span class="info">xxxxxxxxxxx </span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title"></p>
+                            <span class="info"></span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title"></p>
+                            <span class="info"></span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">当前时间</p>
+                            <span class="info" id="box"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="welcome-edge col-lg-3">
+                <!--最新留言-->
+                <div class="panel panel-default comment-panel tongzhi">
+                    <div class="panel-header">最新通知</div>
+                    <div class="panel-body">
+                        <div class="commentbox" style="overflow: hidden">
+                            <div id="div1"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @section scripts{
+        <script src="~/static/lib/echarts/echarts-all.js"></script>
+
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script>
+            $(function () {
+                $.ajax({
+                    url: "/News/Shuju",
+                    type: "post",
+                    dataType: "Json",
+                    success: function (res) {
+                        //解密解码
+                        var nei = decodeURIComponent(atob(res.New_content));
+
+                        $("#div1").html(nei);
+                        if (res === 'True') {
+                            layer.msg('保存成功');
+                        }
+                    }
+                });
+                function Diao() {
+                    top.location.url("~/Store/StoreIndex")
+                };
+            });
+        </script>
+
+        <script>
+
+
+
+            $.ajax({
+                url: "/Home/GetChartsss",
+                type: "get",
+                data: {},
+                success: function (res) {
+                    var WR_remarks = []//用于存放名称
+                    var Grade_price = []//用于存放价格
+                    var SubsidyAmount = []
+                    var WR_Bonus = []
+                    var Deduction = []
+                    var WR_Pay = []
+                    var Real_Wage = []
+                    $.each(res, function (i, v) {
+                        WR_remarks[i] = v.WR_remarks;
+                        SubsidyAmount[i] = v.SubsidyAmount;
+                        Grade_price[i] = v.Grade_price;
+                        WR_Bonus[i] = v.WR_Bonus;
+                        Deduction[i] = v.Deduction;
+                        WR_Pay[i] = v.WR_Pay
+                        Real_Wage[i] = v.Real_Wage
+                    });
+
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('chart'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: '煮仙丹公司等级基本工资',
+                            textStyle: {
+                                color: "rgb(85, 85, 85)",
+                                fontSize: 18,
+                                fontStyle: "normal",
+                                fontWeight: "normal"
+                            }
+                        },
+
+                        tooltip: {},
+                        legend: {
+                            data: ['基本工资', '补贴', '奖金', '考勤扣款', '实发工资', '应发工资']
+                        },
+
+                        xAxis: [
+                            {
+                                data: WR_remarks,
+                                axisLabel: {
+                                    interval: 0,//代表显示所有x轴标签显示
+                                }
+                            }
+                        ],
+                        yAxis: {
+                        },
+                        series: [{
+                            name: '基本工资',
+                            type: 'bar',
+                            data: Grade_price,
+
+                        },
+                        {
+                            name: '补贴',
+                            type: 'bar',
+                            data: SubsidyAmount,
+                        }
+                            ,
+                        {
+                            name: '奖金',
+                            type: 'bar',
+                            data: WR_Bonus,
+
+                        },
+                        {
+                            name: '考勤扣款',
+                            type: 'bar',
+                            data: Deduction,
+
+                        },
+                        {
+                            name: '实发工资',
+                            type: 'bar',
+                            data: WR_Pay,
+
+                        },
+                        {
+                            name: '应发工资',
+                            type: 'bar',
+                            data: Real_Wage,
+
+                        }
+                        ]
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                    window.addEventListener("resize", function () {
+                        myChart.resize();
+                    });
+                }
+            });
+        </script>
+        <script>
+            window.onload = function () {
+                function checkTime(i) {      //此函数用来检查获取的数值是否大于10；
+                    if (i < 10) {
+                        i = '0' + i;      //如果小于10，则前面+0
+                    }
+                    return i;
+                }
+                function show() {
+                    var mydate = new Date();
+                    var year = mydate.getFullYear();
+                    var month = mydate.getMonth() + 1;//因为月份是从零开始，故要得到当前的月份就要+1
+                    var date = mydate.getDate();  //日
+                    var day = mydate.getDay();//返回星期几
+                    var week = new Array(7);
+                    week[0] = '星期一';
+                    week[1] = '星期二';
+                    week[2] = '星期三';
+                    week[3] = '星期四';
+                    week[4] = '星期五';
+                    week[5] = '星期六';
+                    week[6] = '星期日';
+                    var h = mydate.getHours();
+                    var m = mydate.getMinutes();
+                    var s = mydate.getSeconds();
+                    m = checkTime(m);
+                    s = checkTime(s);
+                    document.getElementById('box').innerHTML = year + '年' + month + '月' + date + '日' + week[day] + h + ':' + m + ':' + s;
+                }
+                setInterval(show, 500);  //每隔500ms调用一次show函数
+            };
+        </script>
+    }
+
+</body>
+</html>
+
+

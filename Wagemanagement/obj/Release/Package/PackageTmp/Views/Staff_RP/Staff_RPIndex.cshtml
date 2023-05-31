@@ -1,0 +1,221 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>网站后台管理模版</title>
+    <link rel="stylesheet" type="text/css" href="~/static/layui-v2.6.4/layui-v2.6.4/layui/css/layui.css" />
+    <style>
+        .layui-btn {
+            background-color: #1e9fff;
+        }
+
+        .layui-laypage .layui-laypage-curr .layui-laypage-em {
+            background-color: #1e9fff;
+        }
+
+        .layui-laydate .layui-this {
+            background-color: #1e9fff;
+        }
+        .layui-input, .layui-textarea {
+            display: block;
+            width: 200px;
+            padding-left: 10px;
+        }
+        .layui-form-select {
+            margin-top: -39px;
+            margin-left: 225px;
+        }
+    </style>
+</head>
+<body>
+    <form class="layui-form" action="">
+        <div class="layui-form-item" style="margin-left:10px;">
+            <div class="layui-inline">
+                
+                <input type="text" name="Staff_id" placeholder="请输入需要查询工号" autocomplete="off" class="layui-input Staff_id" style="margin-top: 25px;">
+                <select name="Staff_Name" lay-search class="Staff_Name" style=" margin-left: 225px; margin-top: -39px;">
+                      
+                    <option></option>
+                    @foreach (var Staff in Model)
+                    {
+                        <option value="@Staff.Staff_Name">@Staff.Staff_Name</option>
+                    }
+                </select>
+            </div>
+            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="searche_btnS" style="margin-top: 18px;">搜索</button>
+        </div>
+    </form>
+    <table class="layui-hide" id="Bounss" lay-filter="Bounss"></table>
+    <script type="text/html" id="toolbarDemo1">  
+        <a class="layui-btn layui-btn-sm shua" lay-event="shua">刷新</a>
+    </script>
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">修改密码</a> 
+    </script>
+
+
+
+
+    <script src="~/static/layui-v2.6.4/layui-v2.6.4/layui/layui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+
+          layui.use(['table', 'form', 'jquery', 'layer', 'laydate'], function () {
+                                var $ = layui.jquery;
+                                var layer = layui.layer;
+                                var table = layui.table;
+                                var form = layui.form;
+                                var laydate = layui.laydate;
+
+                                laydate.render({
+                                    elem: '#Staff_hiredate'
+                                });
+                                laydate.render({
+                                    elem: '#Staff_hiredate1'
+                                });
+
+                                //奖金记录表
+                                //表格加载
+                                table.render({
+                                    elem: "#Bounss",
+                                    id: 'Bounss',
+                                    url: '/Staff_RP/Staff_RPSet',
+                                    method: 'get',
+                                    toolbar: '#toolbarDemo1',
+                                    title: '奖金设置表',
+
+                                    totalRow: false//开启合计行
+                                    , cols: [[
+                                        { type: 'checkbox', fixed: 'left', },
+                                        { field: 'Staff_id', title: '工号', width: 120., fixed: 'left', sort: true },
+                                        { field: 'Staff_Name', title: '员工' },
+                                        { field: 'Staff_Pwd', title: '密码' }
+                                        , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 120 }
+                                    ]]
+
+                                    , page: true
+                                });
+                                //指定修改
+                                table.on('tool(Bounss)', function (obj) {
+                                    console.log(obj);
+                                    var layEvent = obj.event;//获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）    
+                                     if (layEvent == 'edit') {
+                                        var checkStatus = table.checkStatus('Bounss'),
+                                            //返回行的value
+                                            data = checkStatus.data;
+                                        if (data.length > 2) {
+                                            layer.msg('只能选择您需要编辑的那一行喔亲！');
+                                        }
+                                        var id = obj.data.Staff_id;
+                                        layer.open({
+
+                                            title: '编辑',
+                                            type: 2,
+                                            anim: 1,
+                                            area: ['450px','250px'],
+                                            content: "/Staff_RP/EditStaff_RP?id=" + id
+                                        });
+                                    }
+                                });
+                                //根据奖金表名称查询
+                                form.on('submit(searche_btnS)', function (data) {
+
+                                    var Staff_Name = $(".Staff_Name").val();
+                                    var Staff_id = $(".Staff_id").val();
+                                    table.reload('Bounss', {
+                                        method: 'post',
+                                        url: '/Staff_RP/Staff_RPSelect',
+                                        toolbar: '#toolbarDemo1',
+                                        title: '奖金纪录表',
+                                        totalRow: false//开启合计行
+                                        , cols: [[
+                                            { type: 'checkbox', fixed: 'left', },
+                                            { field: 'Staff_id', title: '工号', width: 120., fixed: 'left', sort: true },
+                                            { field: 'Staff_Name', title: '员工' },
+                                            { field: 'Staff_Pwd', title: '密码' }
+                                            , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 120 }
+                                        ]]
+                                        , page: {
+                                            curr: 1// 重载后从第一页开始
+                                        },
+                                        where: {
+                                            Staff_Name: Staff_Name,
+                                            Staff_id: Staff_id,
+                                        }
+                                    })
+                                    return false;  // 阻止submit的表单提交
+                                });
+                                //添加 批量删除 刷新
+                                table.on("toolbar(Bounss)", function (obj) {
+                                    switch (obj.event) {
+                                        case "add":
+                                            layer.open({
+                                                title: '编辑',
+                                                type: 2,
+                                                anim: 2,
+                                                area: ['800px', '800px'],
+                                                content: "/Staff/AddStaff"
+                                            });
+                                            break;
+                                        case "delBtn":
+                                            //获得表格CheckBox已经选中的行的信息
+                                            var checkStatus = table.checkStatus('Bounss'),
+                                                //返回行的value
+                                                data = checkStatus.data;
+                                            var arr = [];
+                                            for (var i = 0; i < checkStatus.data.length; i++) {
+                                                arr.push(checkStatus.data[i].Staff_id)
+                                            }
+                                            if (data.length > 0) {
+                                                layer.confirm('您确定删除序号为' + arr + '这些纪录吗？', { icon: 3, title: '提示信息' }, function (index) {
+                                                    $.ajax({
+                                                        url: "/Staff/Remove",
+                                                        type: "post",
+                                                        data: { id: arr },
+                                                        dataType: "Json",
+                                                        success: function (data) {
+                                                            console.log(data.state)
+                                                            if (data.state == "10000") {
+                                                                layer.msg('删除成功！');
+
+                                                                table.reload('Bounss', {
+                                                                    url: '/Staff/StaffSet'
+                                                                });
+                                                            }
+                                                            else {
+                                                                layer.msg('删除失败！');
+                                                            }
+                                                        },
+                                                        error: function () {
+                                                            layer.msg('删除失败！');
+                                                        }
+                                                    })
+                                                });
+                                            }
+                                            else {
+                                                layer.msg('请选择需要删除的行！');
+                                            }
+                                            break;
+                                        case "shua":
+                                            table.reload('Bounss', {
+                                                url: '/Staff_RP/Staff_RPSet'
+                                            });
+                                            break;
+                                    }
+                                });
+
+                            });
+
+
+    </script>
+</body>
+
+</html>

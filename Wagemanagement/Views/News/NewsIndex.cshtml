@@ -1,0 +1,149 @@
+﻿
+@{
+    Layout = null;
+}
+<style>
+    #div1 img {
+        width:50px;
+        height:50px;
+    }
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>fuwenben</title>
+    <link rel="stylesheet" type="text/css" href="~/static/layui-v2.6.4/layui-v2.6.4/layui/css/layui.css" />
+</head>
+<body>
+    <div>
+     
+        <ul>
+            
+            <li style="  float: left;  margin-top: 60px;  margin-left: 60px;">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item" style="margin-left:10px;">
+                        <textarea id="remark" name="remark" style="display: none;"></textarea>
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="searche_btnS" style="margin-top:5px;">提交</button>
+                    </div>
+                </form>
+            </li>
+           
+            <li style=" float: right; margin-right: 300px; margin-top: 60px;">
+                <form class="layui-form" action="">
+                    <div class="welcome-edge col-lg-3" style=" width: 400px; border: 1px solid #d9d9d9;">
+                        <!--最新留言-->
+                        <div class="panel panel-default comment-panel tongzhi">
+                            <div class="panel-header" style=" padding: 10px; border-bottom: 1px solid #d9d9d9;">最新通知</div>
+                            <div class="panel-body">
+                                <div class="commentbox" style="overflow: hidden">
+                                    <div id="div1"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item" style="margin-left:10px;">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="fabu" style=" margin-top: 5px; margin-left: -10px;">发布到网页</button>
+                    </div>
+                </form>
+                   
+            </li>
+        </ul>
+        
+          
+      
+    </div>
+    <script src="~/static/layui-v2.6.4/layui-v2.6.4/layui/layui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+           
+        });
+    </script>
+    <script>
+        layui.use(['table', 'form', 'layer', 'jquery', 'layedit'], function () {
+            var table = layui.table;
+            var $ = layui.jquery;
+            var form = layui.form;
+            var layer = layui.layer;
+            var layedit = layui.layedit;
+            layedit.set({
+                uploadImage: {
+                    url: '/News/Upload', //接口url
+                    type: 'post'
+                }
+            });
+            //layedit.set({
+            //    uploadImage: {
+            //        url: '/News/Upload', //接口url
+            //        type: 'post'
+            //    }
+            //});
+            var index1 = layedit.build('remark');
+            //模糊查询
+            //工具条事件
+            form.on('submit(searche_btnS)', function (data) {
+
+                var aa = layedit.getContent(index1);
+                console.log(aa);
+                //编码
+                window.btoa(window.encodeURIComponent(aa));
+                //解码
+                /*  decodeURIComponent(atob(encodedString));*/
+                $.ajax({
+                    url: "/News/NewsFu",
+                    type: "post",
+                    data: {
+                        //编码
+                        nai: window.btoa(window.encodeURIComponent(aa))
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        if (res === 'True') {
+                            layer.msg('保存成功');
+                            $.ajax({
+                                url: "/News/Shuju1",
+                                type: "post",
+                                dataType: "Json",
+                                success: function (res) {
+                                    //解密解码
+                                    var nei = decodeURIComponent(atob(res.New_content));
+                                    $("#div1").html(nei);
+                                    if (res === 'True') {
+                                        layer.msg('保存成功');
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+                return false;  // 阻止submit的表单提交
+            });
+            form.on('submit(fabu)', function (data) {
+
+                var aa = $("#div1").html();
+                console.log(aa);
+                //解码
+                /*  decodeURIComponent(atob(encodedString));*/
+                $.ajax({
+                    url: "/News/NewsFus",
+                    type: "post",
+                    data: {
+                        //加密加码
+                        nai: window.btoa(window.encodeURIComponent(aa))
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        if (res === 'True') {
+                            layer.msg('发布通知成功');
+                        }
+                    }
+                });
+                return false;  // 阻止submit的表单提交
+            });
+        });
+    </script>
+</body>
+</html >

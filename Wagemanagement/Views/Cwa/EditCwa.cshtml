@@ -1,0 +1,121 @@
+﻿
+
+
+@model Wagemanagement.Models.Cwa
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditJournal</title>
+    <link rel="stylesheet" type="text/css" href="~/static/layui-v2.6.4/layui-v2.6.4/layui/css/layui.css" />
+    <style>
+        .layui-form-select, .layui-input, .layui-textarea {
+            width: 295px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form class="layui-form" action="" lay-filter="formTest">
+            <div class="layui-form-item" style="margin-top:15px;">
+                <label class="layui-form-label">考勤编号:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Cwa_id" disabled required lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">考勤名称:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Cwa_Name" required lay-verify="required|Cwa_Name" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">考勤扣款比率</label>
+                <div class="layui-input-block">
+                    <input type="number" name="Cwa_pirce" required lay-verify="required" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo" style="background-color: #1e9fff;">立即提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="~/static/layui-v2.6.4/layui-v2.6.4/layui/layui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+    layui.use('form', function(){
+        var form = layui.form;
+
+        form.val("formTest",
+            {
+                "Cwa_id": "@Model.Cwa_id",
+                "Cwa_Name": "@Model.Cwa_Name",
+                "Cwa_pirce": "@Model.Cwa_pirce"
+
+
+            });
+        form.verify({
+            Cwa_Name: function (value, item) { //value：表单的值、item：表单的DOM对象
+                console.log(value);
+                if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+                    return '考勤名不能有特殊字符';
+                }
+                if (/(^\_)|(\__)|(\_+$)/.test(value)) {
+                    return '考勤名首尾不能出现下划线\'_\'';
+                }
+                if (/^\d+\d+\d$/.test(value)) {
+                    return '考勤名不能全为数字';
+                }
+                //if ((/[^\u4E00-\u9FA5]/).test(value)) {
+                //    return '只能输入中文';
+                //}
+            },
+            //shuzi: function (value, item) {
+            //    if (!new RegExp("^[0-9]+(.[0-9]{2})?$").test(value)) {
+            //        return '只能输入0-10';
+            //    }
+            //}
+        });
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            console.log(data)
+            layer.msg(JSON.stringify(data.field));
+            var Cwa_id = data.field["Cwa_id"];
+            var Cwa_Name = data.field["Cwa_Name"];
+            var Cwa_pirce = data.field["Cwa_pirce"];
+
+
+            $.post({
+                url: "UpdateCwa",
+                data: { Cwa_id: Cwa_id, Cwa_Name: Cwa_Name, Cwa_pirce: Cwa_pirce},
+                success: res => {
+                    if (res == "True") {
+                        //从父级关闭所有层
+                        parent.layer.closeAll();
+                        parent.layer.msg("修改成功");
+                        //调用父页面的分页确定按钮的点击事件
+                       parent.document.getElementsByClassName("layui-laypage-btn")[0].click();
+
+                    } else {
+                        layer.msg("考勤名不能重复添加或数据未修改!");
+                    }
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>网站后台管理模版</title>
+    <link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="../../static/admin/css/admin.css" />
+    
+    <style>
+        .tongzhi img {
+            width: 80px;
+            height: 80px;
+        }
+
+        #test-n1 .layui-laydate-content td,
+        #test-n1 .layui-laydate-content th {
+            width: 87px;
+            height: 35px;
+        }
+
+        .layui-laydate-main {
+            width: 305px;
+        }
+    </style>
+</head>
+
+<body>
+    
+        <div class="wrap-container welcome-container">
+            <div class="row">
+                <div class="welcome-left-container col-lg-9">
+                    <div class="data-show">
+                        <ul class="clearfix">
+                            <li class="col-sm-12 col-md-4 col-xs-12">
+                                <a href="javascript:;" class="clearfix">
+                                    <div class="icon-bg bg-org f-l">
+                                        <span class="iconfont">&#xe606;</span>
+                                    </div>
+                                    <div class="right-text-co0n">
+                                        <p class="name">店铺总数</p>
+                                        <p><span class="color-org">@ViewBag.dianpu</span><span class="iconfont">个</span></p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="col-sm-12 col-md-4 col-xs-12">
+                                <a href="javascript:;" class="clearfix" onclick="top.location.href('~/Store/StoreIndex')">
+                                    <div class="icon-bg bg-blue f-l">
+                                        <span class="iconfont"><svg style="margin-top:-5px" t="1623743651180" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2560" width="50" height="50"><path d="M958.4 361.6c-5.6-18.4-47.2-119.2-56-139.2-0.8-0.8-0.8-1.6-1.6-3.2l-5.6-10.4c-26.4-53.6-61.6-126.4-149.6-116.8H264.8c-92-10.4-131.2 75.2-154.4 126.4l-0.8 2.4c-0.8 1.6-1.6 3.2-2.4 5.6-4 12.8-38.4 122.4-44 140.8-14.4 53.6-4 108.8 31.2 154.4 0 2.4-0.8 4.8-0.8 7.2v256.8c0 89.6 72.8 162.4 162.4 162.4h513.6c89.6 0 162.4-72.8 162.4-162.4V538.4l0.8-0.8c35.2-48.8 45.6-115.2 25.6-176zM156 392.8c3.2-12 26.4-86.4 41.6-134.4 26.4-57.6 38.4-72.8 57.6-70.4 2.4 0 4 0.8 6.4 0.8h488.8c2.4 0 4 0 6.4-0.8 16.8-2.4 25.6 5.6 53.6 63.2l4.8 9.6c23.2 56.8 48.8 120.8 52 130.4 10.4 32 5.6 65.6-12.8 90.4-17.6 24-44.8 36.8-76.8 36.8-18.4 0-44.8-19.2-65.6-34.4-5.6-4-10.4-8-16-11.2-17.6-12.8-41.6-11.2-58.4 2.4-24.8 20.8-65.6 44-104 43.2-40-0.8-80.8-22.4-105.6-43.2-8.8-7.2-20-11.2-30.4-11.2-9.6 0-19.2 3.2-27.2 8.8-4.8 3.2-10.4 7.2-16 11.2-20.8 15.2-47.2 34.4-65.6 34.4-46.4 0-92-21.6-117.6-54.4-16.8-22.4-22.4-46.4-15.2-71.2z m613.6 458.4H256c-36.8 0-66.4-29.6-66.4-66.4V594.4c30.4 12.8 64.8 20 98.4 20 43.2 0 79.2-21.6 108.8-43.2 31.2 20 79.2 42.4 135.2 43.2h2.4c55.2 0 103.2-23.2 133.6-43.2 29.6 20.8 65.6 43.2 108.8 43.2 20 0 40-3.2 58.4-8.8v180c0 36-29.6 65.6-65.6 65.6z" p-id="2561" fill="#ffffff"></path></svg></span>
+                                    </div>
+                                    <div class="right-text-con">
+                                        <p class="name">总员工数</p>
+                                        <p><span class="color-blue">@ViewBag.Staff</span><span class="iconfont">个</span></p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="col-sm-12 col-md-4 col-xs-12">
+                                <a href="javascript:;" class="clearfix">
+                                    <div class="icon-bg bg-green f-l">
+                                        <span class="iconfont"><svg style="margin-top:-5px" t="1624198015372" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2924" width="50" height="50"><path d="M812.137931 229.517241V35.310345H211.862069v194.206896H88.275862v759.172414h847.448276V229.517241h-123.586207z m35.310345 88.275862v300.137931h-35.310345V317.793103h35.310345zM300.137931 123.586207h423.724138v494.344827H300.137931V123.586207z m-88.275862 194.206896v300.137931h-35.310345V317.793103h35.310345z m-35.310345 582.62069V706.206897h670.896552v194.206896H176.551724z" fill="#ffffff" p-id="2925"></path><path d="M651.828966 194.206897l-100.457932 202.504827h97.103449v40.783448h-111.051035V476.689655h111.051035v41.136552h-111.051035v81.566896h-51.023448v-81.566896H372.524138V476.689655h113.875862v-39.017931H372.524138v-40.783448h98.692414L372.171034 194.206897h58.262069l82.449656 174.786206 84.215172-174.786206h54.731035z" fill="#ffffff" p-id="2926"></path></svg></span>
+                                    </div>
+                                    <div class="right-text-con">
+                                        <p class="name">本月现需发工资总数</p>
+                                        <p><span class="color-green">@ViewBag.sum</span><span class="iconfont">RMB</span></p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--图表-->
+                    <div class="chart-panel panel panel-default">
+                        <div class="panel-body" id="chart" style="height: 376px;">
+                        </div>
+                    </div>
+                    <!--服务器信息-->
+                    <div class="server-panel panel panel-default">
+                        <div class="panel-header">联系我们</div>
+                        <div class="panel-body clearfix">
+                            <div class="col-md-2">
+                                <p class="title">微信:</p>
+                                <span class="info">xxxxxxxxxxxx</span>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="title">QQ:</p>
+                                <span class="info">xxxxxxxxxxx</span>
+                            </div>
+                            <div>
+                                <div class="col-md-2">
+                                    <p class="title">邮箱:</p>
+                                    <span class="info">xxxxxxxxxxx</span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="title"></p>
+                                <span class="info"></span>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="title"></p>
+                                <span class="info"></span>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="title">当前时间</p>
+                                <span class="info" id="box"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="welcome-edge col-lg-3">
+                    <!--最新留言-->
+                    <div class="panel panel-default comment-panel tongzhi">
+                        <div class="panel-header" style=" padding: 10px; border-bottom: 1px solid #d9d9d9;">最新通知</div>
+                        <div class="panel-body">
+                            <div class="commentbox" style="overflow: hidden">
+                                <div id="div1"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-inline" id="test-n1" style="width: 300px;"></div>
+            </div>
+        </div>
+
+        @section scripts{
+
+            <script src="~/static/lib/echarts/echarts-all.js"></script>
+            <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+            <script>
+                $(function () {
+                    $.ajax({
+                        url: "/News/Shuju",
+                        type: "post",
+                        dataType: "Json",
+                        success: function (res) {
+                            //解密解码
+                            var nei = decodeURIComponent(atob(res.New_content));
+
+                            $("#div1").html(nei);
+                            if (res === 'True') {
+                                layer.msg('保存成功');
+                            }
+                        }
+                    });
+                    function Diao() {
+                        top.location.url("~/Store/StoreIndex")
+                    };
+                });
+            </script>
+            <script>
+                $.ajax({
+                    url: "/Home/GetCharts",
+                    type: "get",
+                    data: {},
+                    success: function (res) {
+                        var objs = []//用于存放名称
+                        var obj1 = []//用于存放价格
+
+                        $.each(res, function (i, v) {
+                            objs[i] = v.GradeName;
+
+                            obj1[i] = v.Grade_price;
+                        });
+                        console.log("名称:" + objs);
+                        console.log("价格:" + obj1);
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart = echarts.init(document.getElementById('chart'));
+                        // 指定图表的配置项和数据
+                        var option = {
+                            title: {
+                                text: '煮仙丹公司等级基本工资',
+                                textStyle: {
+                                    color: "rgb(85, 85, 85)",
+                                    fontSize: 18,
+                                    fontStyle: "normal",
+                                    fontWeight: "normal"
+                                }
+                            },
+                            color: ["#86d2ee"],
+                            tooltip: {},
+                            legend: {
+                                data: ['工资']
+                            },
+
+                            xAxis: [
+                                {
+                                    data: objs,
+                                    axisLabel: {
+                                        interval: 0,//代表显示所有x轴标签显示
+                                    }
+                                }
+                            ],
+                            yAxis: {
+                            },
+                            series: [{
+                                name: '工资',
+                                type: 'bar',
+                                data: obj1,
+
+                            }
+                            ]
+                        };
+                        // 使用刚指定的配置项和数据显示图表。
+                        myChart.setOption(option);
+                        window.addEventListener("resize", function () {
+                            myChart.resize();
+                        });
+                    }
+                });
+            </script>
+
+            <script>
+                layui.use('laydate', function () {
+                    var laydate = layui.laydate;
+
+                    //执行一个laydate实例
+                    laydate.render({
+                        elem: '#test-n1'
+                        , position: 'static'
+                    });
+                });
+                window.onload = function () {
+                    function checkTime(i) {      //此函数用来检查获取的数值是否大于10；
+                        if (i < 10) {
+                            i = '0' + i;      //如果小于10，则前面+0
+                        }
+                        return i;
+                    }
+                    function show() {
+                        var mydate = new Date();
+                        var year = mydate.getFullYear();
+                        var month = mydate.getMonth() + 1;//因为月份是从零开始，故要得到当前的月份就要+1
+                        var date = mydate.getDate();  //日
+                        var day = mydate.getDay();//返回星期几
+                        var week = new Array(7);
+                        week[0] = '星期一';
+                        week[1] = '星期二';
+                        week[2] = '星期三';
+                        week[3] = '星期四';
+                        week[4] = '星期五';
+                        week[5] = '星期六';
+                        week[6] = '星期日';
+                        var h = mydate.getHours();
+                        var m = mydate.getMinutes();
+                        var s = mydate.getSeconds();
+                        m = checkTime(m);
+                        s = checkTime(s);
+                        document.getElementById('box').innerHTML = year + '年' + month + '月' + date + '日' + week[day] + h + ':' + m + ':' + s;
+                    }
+                    setInterval(show, 500);  //每隔500ms调用一次show函数
+                };
+            </script>
+        }
+
+</body>
+
+</html>

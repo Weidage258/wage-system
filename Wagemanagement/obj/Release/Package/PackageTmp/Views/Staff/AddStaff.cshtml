@@ -1,0 +1,252 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditJournal</title>
+    <link rel="stylesheet" type="text/css" href="~/static/layui-v2.6.4/layui-v2.6.4/layui/css/layui.css" />
+    <style>
+        .layui-form-select, .layui-input, .layui-textarea {
+            width: 295px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form class="layui-form" action="" lay-filter="formTest">
+            <div class="layui-form-item" style="margin-top:15px;">
+                <label class="layui-form-label">工号:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Staff_id" required lay-verify="required|staff_id" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">登录密码:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Staff_Pwd" required lay-verify="required|password" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">员工名:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Staff_Name" required lay-verify="required|Staff_Name" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">等级:</label>
+                <div class="layui-input-block">
+                     
+                    <select name="GradeName" lay-search>
+                        <option>店员</option>
+                        <option disabled>-----请选择一下等级-----</option>
+                        @foreach (var Grade in ViewBag.Grade)
+                        {
+                            <option value="@Grade.GradeName">@Grade.GradeName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限:</label>
+                <div class="layui-input-block">
+                    <select name="Role_Name" lay-search>
+                        <option>普通员工</option>
+                        <option disabled>-----请选择一下权限-----</option>
+                        @foreach (var Role in ViewBag.Role)
+                        {
+                            <option value="@Role.Role_Name">@Role.Role_Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">部门:</label>
+                <div class="layui-input-block">
+                    <select name="Dt_Name" lay-search>
+
+                        <option disabled>-----请选择一下部门-----</option>
+                        @foreach (var Department in ViewBag.Department)
+                        {
+
+                            <option value="@Department.Dt_Name">@Department.Dt_Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">店铺:</label>
+                <div class="layui-input-block">
+                    <select name="Store_Name" lay-search>
+
+                        <option disabled>-----请选择一下店铺-----</option>
+                        @foreach (var Store in ViewBag.Store)
+                        {
+                            <option value="@Store.Store_Name">@Store.Store_Name</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">住址:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Staff_Address" required lay-verify="required|Address" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">电话:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Staff_Phone" required lay-verify="required|phone" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">员工状态:</label>
+                <div class="layui-input-block">
+                 
+                    <select name="Sraff_State" required lay-verify="required">
+
+                        <option disabled>-----请选择一下状态状态-----</option>
+                        <option>在职</option>
+                        <option>离职</option>er
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别:</label>
+                <div class="layui-input-inline">
+
+                    <input type="radio" name="Staff_Sex" value="0" title="男" checked />
+                    <input type="radio" name="Staff_Sex" value="1" title="女" />
+
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Staff_Email" required lay-verify="required|email" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">入职时间:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Staff_hiredate" v id="Staff_hiredate1" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">备注:</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Staff_Remark" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo" style="background-color: #1e9fff;">立即提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="~/static/layui-v2.6.4/layui-v2.6.4/layui/layui.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        layui.use(['form','laydate'], function () {
+          var laydate = layui.laydate;
+            var form = layui.form;
+
+
+            form.verify({
+                Staff_Name: function (value, item) { //value：表单的值、item：表单的DOM对象
+                    console.log(value);
+                    if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+                        return '名字不能有特殊字符';
+                    }
+                    if (/(^\_)|(\__)|(\_+$)/.test(value)) {
+                        return '名字名首尾不能出现下划线\'_\'';
+                    }
+                    if (/^\d+\d+\d$/.test(value)) {
+                        return '名字名不能全为数字';
+                    }
+                    if ((/[^\u4E00-\u9FA5]/).test(value)) {
+                        return '只能输入中文';
+                    }
+                },
+             
+                password: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'],
+                staff_id:  function(value) {
+                    if (value.length != 9) {
+                        return '工号只能9位数';
+                    }
+                },
+                Address: function (value, item) { //value：表单的值、item：表单的DOM对象
+                    console.log(value);
+                    if (/(^\_)|(\__)|(\_+$)/.test(value)) {
+                        return '地址名首尾不能出现下划线\'_\'';
+                    }
+                    if (/^\d+\d+\d$/.test(value)) {
+                        return '地址不能全为数字';
+                    }
+                   
+                },
+              
+
+            });
+               
+            //日期
+            laydate.render({
+                elem: '#Staff_hiredate'
+
+
+            });
+            laydate.render({
+                elem: '#Staff_hiredate1'
+
+
+            });
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            console.log(data)
+            layer.msg(JSON.stringify(data.field));
+
+            var id = data.field["Staff_id"];
+            var Staff_Pwd = data.field["Staff_Pwd"];
+            var Staff_Name = data.field["Staff_Name"];
+            var GradeName = data.field["GradeName"];
+            var Role_Name = data.field["Role_Name"];
+            var Dt_Name = data.field["Dt_Name"];
+            var Store_Name = data.field["Store_Name"];
+            var Staff_Address = data.field["Staff_Address"];
+            var Staff_Phone = data.field["Staff_Phone"];
+            var Sraff_State = data.field["Sraff_State"];
+            var Staff_Sex = data.field["Staff_Sex"];
+            var Staff_Email = data.field["Staff_Email"];
+            var Staff_hiredate = data.field["Staff_hiredate"];
+            var Staff_Remark = data.field["Staff_Remark"];
+            $.post({
+                url: "/Staff/UpdateStaffData",
+                data: { Staff_id: id, Staff_Pwd:Staff_Pwd,Staff_Name: Staff_Name, GradeName: GradeName, Role_Name: Role_Name, Dt_Name: Dt_Name, Store_Name: Store_Name, Staff_Address: Staff_Address, Staff_Phone: Staff_Phone, Sraff_State: Sraff_State, Staff_Sex: Staff_Sex, Staff_Email: Staff_Email, Staff_hiredate: Staff_hiredate,Staff_Remark:Staff_Remark},
+                success: res => {
+                    if (res == "True") {
+                        //从父级关闭所有层
+                        parent.layer.closeAll();
+                        parent.layer.msg("添加成功");
+                        //调用父页面的分页确定按钮的点击事件
+                        parent.document.getElementsByClassName("layui-laypage-btn")[0].click();
+
+                    } else {
+                        layer.msg("数据未修改!");
+                    }
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+</body>
+</html>
+
